@@ -8,6 +8,7 @@ class Particle {
 
     update() {
         this.vel.add(this.acc);
+        constrain(this.vel.x, -1, 1);
         this.pos.add(this.vel);
         this.acc.mult(0);
     }
@@ -16,13 +17,21 @@ class Particle {
         this.acc.add(accel);
     }
 
-    applyGravity() {
-        this.acc.y += 0.1;
-    }
-
     show() {
         stroke(0, 65);
         strokeWeight(1);
         circle(this.pos.x, this.pos.y, 10);
+    }
+
+    checkEdges() {
+        if (this.pos.y > height) {
+            this.pos.y = 0;
+        }
+        if (this.pos.x > width) {
+            this.pos.x = 0;
+        }
+        if (this.pos.x < 0) {
+            this.pos.x = width;
+        }
     }
 }
