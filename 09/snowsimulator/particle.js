@@ -8,7 +8,7 @@ class Particle {
 
     update() {
         this.vel.add(this.acc);
-        constrain(this.vel.x, -1, 1);
+        constrain(this.vel.x, -1, 1 );
         this.pos.add(this.vel);
         this.acc.mult(0);
     }
